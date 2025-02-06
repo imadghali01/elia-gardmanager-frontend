@@ -8,7 +8,7 @@ function App() {
 
   return (
     <div>
-    <Login />
+    <Route path="/login" element={<Login />} />
   </div>
   )
 }
