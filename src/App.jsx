@@ -4,7 +4,7 @@ import './styles/tailwind-global.css';
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Schedule from "./pages/Schedule";
-
+import HomeAdmin from "./pages/HomeAdmin";
 
 
 function App() {
@@ -17,8 +17,9 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/Schedule" element={<Schedule />} />
 
+      <Route path="/HomeAdmin" element={<HomeAdmin />} />
     </Routes>
-    </BrowserRouter>
+    </BrowserRouter> 
 )
 
 
