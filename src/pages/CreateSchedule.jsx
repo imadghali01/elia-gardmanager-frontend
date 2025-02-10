@@ -8,7 +8,7 @@ import Navbar from "../components/Navbar";
 
 
 
-function Schedule() {
+function CreateSchedule() {
 
     const { t, i18n } = useTranslation();
     const [language, setLanguage] = useState("EN");
@@ -100,5 +100,5 @@ function Schedule() {
             );
     }
 
-export default Schedule;
+export default CreateSchedule;
 
