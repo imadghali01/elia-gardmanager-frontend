@@ -1,7 +1,9 @@
 import { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import "./Schedule.css"; // Ajoute ce fichier pour le style
+import "./Schedule.css";
+import logo from "../assets/img/logoElia.png";
+
 
 function Schedule() {
   const [date, setDate] = useState(new Date());
@@ -24,20 +26,14 @@ function Schedule() {
       <Calendar onClickDay={handleDayClick} />
 
       {showPopup && (
-        <div className="popup">
+        <div className="popup-overlay">
           <div className="popup-content">
-            <h3>Ajouter un événement</h3>
+            <img src={logo} alt="Elia Logo" className="logo" />
             <p>Date sélectionnée : {date.toLocaleDateString()}</p>
-            <input
-              type="text"
-              placeholder="Nom de l'événement"
-              value={eventName}
-              onChange={(e) => setEventName(e.target.value)}
-            />
-            <div className="popup-buttons">
-              <button onClick={handleSaveEvent}>Enregistrer</button>
-              <button onClick={() => setShowPopup(false)}>Annuler</button>
-            </div>
+            <button className="close-btn" onClick={() => setShowPopup(false)}>❌</button>
+            <button className="popup-btn">Propose Your Service</button>
+            <button className="popup-btn">Ask For A Switch</button>
+            <button className="popup-btn">See All the Switch</button>
           </div>
         </div>
       )}
