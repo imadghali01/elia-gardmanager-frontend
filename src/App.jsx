@@ -5,7 +5,6 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Schedule from "./pages/Schedule";
 import HomeAdmin from "./pages/HomeAdmin";
-import Schedule from "./pages/Schedule";
 import Offers from "./pages/Offers";
 
 
@@ -20,7 +19,6 @@ function App() {
       <Route path="/Schedule" element={<Schedule />} />
       <Route path="/offers" element={<Offers />} />
       <Route path="/HomeAdmin" element={<HomeAdmin />} />
-      <Route path="/Schedule" element={<Schedule />} />
     </Routes>
     </BrowserRouter> 
 )
