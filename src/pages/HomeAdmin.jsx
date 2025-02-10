@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; 
+import { useTranslation } from "react-i18next"; 
 import '../styles/tailwind-global.css';
 import '../styles/custom.css';
 
@@ -7,29 +9,35 @@ import '../styles/custom.css';
 
 function HomeAdmin() {
 
+    const { t, i18n } = useTranslation();
     const [language, setLanguage] = useState("EN");
-
+    const navigate = useNavigate();
+    
+    const changeLanguage = (lng) => {
+      i18n.changeLanguage(lng);// Bascule entre "en" et "fr"
+    };
+  
     return (
 
         <div className="flex min-h-screen flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-gray-100">
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-10 px-6 shadow-md rounded-lg">
+        <div className="bg-white py-2 px-6 shadow-md rounded-lg">
 
         <div className="min-h-screen bg-white flex flex-col items-center">
         {/* Header */}
-        <header className="w-full flex items-center justify-between bg-white border-b shadow-md p-4">
+        <header className="w-112 flex items-center justify-between bg-white border-b  p-4">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <img src="/src/assets/img/LogoElia.png" alt="Elia Logo" className="h-13" /> 
+            <img src="/src/assets/img/LogoElia.png" alt="Elia Logo" className="h-11" />  
           </div>
   
           {/* Title */}
-          <h1 className="text-xl font-bold text-gray-800">eDuty</h1>
+          <h1 className="text-lg font-bold pr-10 pt-1">eDuty</h1>
   
           {/* Language Switcher */}
           <div className="flex space-x-2">
             <button
-              onClick={() => setLanguage("EN")}
+              onClick={() => changeLanguage("en")}
               className={`p-1 rounded ${
                 language === "EN" ? "border-2 border-gray-800" : ""
               }`}
@@ -37,7 +45,7 @@ function HomeAdmin() {
               🇬🇧
             </button>
             <button
-              onClick={() => setLanguage("FR")}
+              onClick={() => changeLanguage("fr")}
               className={`p-1 rounded ${
                 language === "FR" ? "border-2 border-gray-800" : ""
               }`}
@@ -48,26 +56,27 @@ function HomeAdmin() {
         </header>
   
         {/* Buttons Section */}
-        <div className="w-full max-w-sm mt-20 space-y-4">
+        <div className="w-full max-w-sm mt-80 space-y-4">
           <button
             type="button"
             className="w-full rounded-md bg-orange-500 px-4 py-3 text-white font-semibold shadow hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400"
+            onClick={() => navigate("/register")} 
           >
-            Create a New User
+            {t("createUser")}
           </button>
   
           <button
             type="button"
             className="w-full rounded-md bg-orange-500 px-4 py-3 text-white font-semibold shadow hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400"
           >
-            See the Current and Finished Switches
+            {t("seeSwitches")}
           </button>
   
           <button
             type="button"
             className="w-full rounded-md bg-orange-500 px-4 py-3 text-white font-semibold shadow hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400"
           >
-            Create the Schedule
+            {t("createSchedule")}
           </button>
         </div>
       </div>
