@@ -22,6 +22,7 @@ function Schedule() {
   };
 
   return (
+  <div className="body">
     <div className="calendar-container">
       <Calendar onClickDay={handleDayClick} />
 
@@ -38,6 +39,7 @@ function Schedule() {
         </div>
       )}
     </div>
+  </div>
   );
 }
 

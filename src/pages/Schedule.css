@@ -1,9 +1,13 @@
+/* body de la page */
+.body{
+  background-color: rgb(234, 233, 233);
+}
+
 /* Calandrier */
 .calendar-container{
 width: 350px; /* Je peux pas elargire plus le calendrier que ca je crois  */
 margin:auto;
 }
-
 
 /* Fond du popup */
 .popup-overlay {

@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Schedule from "./pages/Schedule";
 import HomeAdmin from "./pages/HomeAdmin";
+import Offers from "./pages/Offers";
 
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
       <Route path="/Schedule" element={<Schedule />} />
-
+      <Route path="/offers" element={<Offers />} />
       <Route path="/HomeAdmin" element={<HomeAdmin />} />
     </Routes>
     </BrowserRouter> 
@@ -25,4 +26,4 @@ function App() {
 
 }
 
-export default App
+export default App;
