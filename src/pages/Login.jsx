@@ -1,20 +1,35 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; 
 
 const Login = ({ onClose }) => {  
     const [userId, setUserId] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
 
-        // Vérification simple pour simuler une connexion réussie
-        if (userId === "admin" && password === "1234") {
-            alert("Connexion réussie !");
-            localStorage.setItem("user", JSON.stringify({ userId }));
-        } else {
-            alert("Échec de connexion, identifiants incorrects.");
-        }
-    };
+        try {
+            const response = await fetch("http://localhost:8000/user/login", {
+              method: "POST", 
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ email: userId, passWord: password }), // Envoie les infos
+            });
+      
+            const data = await response.json();
+      
+            if (response) {
+              navigate("/schedule"); // Redirige vers Schedule
+            } else {
+              alert(data.error || "Identifiants incorrects");
+            }
+          } catch (error) {
+            console.error("Erreur de connexion :", error);
+            alert("Problème de connexion au serveur");
+          }
+        };
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-900">
