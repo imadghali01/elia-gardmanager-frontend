@@ -4,6 +4,8 @@ import "react-calendar/dist/Calendar.css";
 import "./Schedule.css";
 import logo from "../assets/img/logoElia.png";
 import { Container } from "postcss";
+import Logout from "../components/Logout";
+
 
 
 function Schedule() {
@@ -26,6 +28,7 @@ function Schedule() {
     <div className="flex min-h-screen flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-gray-100">
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-10 px-6 shadow-md rounded-lg">
+        <Logout/>
         <div className="sm:mx-auto sm:w-full sm:max-w-md mb-10 mt-5">
         <img
             alt="Your Company"
