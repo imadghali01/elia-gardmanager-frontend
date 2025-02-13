@@ -64,3 +64,10 @@ margin:auto;
   font-size: 20px;
   cursor: pointer;
 }
+
+.custom-datepicker {
+  width: 100%;
+  max-width: 400px;
+  border: solid 1px;
+  padding: 5px;
+}
