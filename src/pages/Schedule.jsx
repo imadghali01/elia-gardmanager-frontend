@@ -31,6 +31,34 @@ function Schedule() {
     setEventName("");
   };
 
+  const handleSaveSwitch = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/api/switch", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userOne: "65a123456abcde789fghi012", // ID de l'utilisateur actuel
+          userTwo: null, // Optionnel
+          type: "request", // ou "offer" selon le formulaire
+          dateIn: startDate, // Date sélectionnée dans le DatePicker
+          dateOut: null // Optionnel
+        }),
+      });
+  
+      const data = await response.json();
+      if (response.ok) {
+        alert("Switch enregistré avec succès !");
+      } else {
+        alert("Erreur : " + data.message);
+      }
+    } catch (error) {
+      console.error("Erreur lors de l'enregistrement :", error);
+    }
+  };
+  
+
   return (
     <div className="flex min-h-screen flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-gray-100">
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
@@ -94,8 +122,11 @@ function Schedule() {
       showTimeSelect
       dateFormat="Pp"
       className="custom-datepicker"
+      value={FormData.dateIn}  /* <<<<<<<<<<<<<<<<<<<<<<< la veuleur enregistrer dans le back end pas sur si cest la bonne valuer>>>>>>>>>>>>>>>>>>>>>>>>< */
     />  
-    <button className="bg-white text-black text-lg border-orange-400 border-4 py-2 w-50 my-2 rounded-lg cursor-pointer hover:bg-orange-400">Save</button>
+    <button 
+      onClick={handleSaveSwitch}
+    className="bg-white text-black text-lg border-orange-400 border-4 py-2 w-50 my-2 rounded-lg cursor-pointer hover:bg-orange-400">Save</button>
     </div>
 )}
 
@@ -111,15 +142,17 @@ function Schedule() {
       showTimeSelect
       dateFormat="Pp"
       className="custom-datepicker"
+      value={FormData.dateIn}  /* <<<<<<<<<<<<<<<<<<<<<<< la veuleur enregistrer dans le back end pas sur si cest la bonne valuer>>>>>>>>>>>>>>>>>>>>>>>>< */
     />    
       <div className="text-left ml-11 pt-2">
-      <label><input type="radio" name="reason" value="duration" /> Duration days</label><br />
+      <label><input type="radio" name="reason" value="holidays" /> Holidays</label><br />
       <label><input type="radio" name="reason" value="other" /> Other</label><br />
       <label className=""><input type="radio" name="reason" value="invalid"/> Invalid</label>
       <div></div>
     </div>
-      <button className="bg-white text-black text-lg border-orange-400 border-4 py-2 w-50 my-2 rounded-lg cursor-pointer hover:bg-orange-400">Save</button>
-  </div>
+    <button 
+    onClick={handleSaveSwitch}
+    className="bg-white text-black text-lg border-orange-400 border-4 py-2 w-50 my-2 rounded-lg cursor-pointer hover:bg-orange-400">Save</button>  </div>
 )}
 
 
