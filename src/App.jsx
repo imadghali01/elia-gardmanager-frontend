@@ -6,8 +6,6 @@ import Register from "./pages/Register";
 
 import Schedule from "./pages/Schedule";
 
-import Offers from "./pages/Offers";
-
 import HomeAdmin from "./pages/HomeAdmin";
 import CreateSchedule from './pages/CreateSchedule';
 
