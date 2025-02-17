@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "./Schedule.css";
@@ -10,12 +10,48 @@ import "react-datepicker/dist/react-datepicker.css";
 
 
 
+
 function Schedule() {
   const [date, setDate] = useState(new Date());
   const [showPopup, setShowPopup] = useState(false);
   const [showServiceForm, setShowServiceForm] = useState(false);
   const [showSwitchForm, setShowSwitchForm] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
+
+  const [shifts, setShifts] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:8000/schedule")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Données reçues du backend :", data); // 🔍 Debug
+  
+        if (!data || !Array.isArray(data)) {
+          console.error("Format inattendu des données !");
+          return;
+        }
+  
+        // Extraire et reformater les shifts
+        const formattedShifts = data.flatMap((entry) =>
+          Object.entries(entry.shifts || {}).flatMap(([shiftKey, days]) =>
+            Object.entries(days).map(([day, shiftDetails]) => ({
+              date: shiftDetails[0], // Première valeur du tableau
+              userId: shiftDetails[1], // Deuxième valeur
+              extraInfo: shiftDetails[2], // Troisième valeur (peut être null)
+              type: shiftKey, // shift1, shift2, etc.
+              day: day, // Lundi, Mardi, etc.
+            }))
+          )
+        );
+  
+        console.log("Shifts formatés :", formattedShifts);
+        setShifts(formattedShifts);
+      })
+      .catch((error) =>
+        console.error("Erreur lors du chargement des shifts:", error)
+      );
+  }, []);
+  
+  
 
 
   
@@ -33,7 +69,7 @@ function Schedule() {
 
   const handleSaveSwitch = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/switch", {
+      const response = await fetch("http://localhost:8000/switch", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -72,32 +108,60 @@ function Schedule() {
         </div>
         <div className="px-6 rounded-lg mt-15 sm:mx-auto sm:w-full sm:max-w-md">
   <div className="calendar-container">
-    <Calendar onClickDay={handleDayClick} />
+  <Calendar
+  onClickDay={handleDayClick}
+  tileClassName={({ date, view }) => {
+    if (view !== "month") return "";
+  
+    const dateString = date.toISOString().split("T")[0]; // Format "YYYY-MM-DD"
+  
+    const shiftFound = shifts.find((schedule) => schedule.date === dateString);
+  
+    if (shiftFound) {
+      switch (shiftFound.type) {
+        case "shift1":
+          return "react-calendar__tile red";
+        case "shift2":
+          return "react-calendar__tile blue";
+        case "shift3":
+          return "react-calendar__tile green";
+        default:
+          return "";
+      }
+    }
+  
+    return "";
+  }}
+  
+
+  
+/>
+
     
     {/* Légende des couleurs */}
     <div className="flex justify-center gap-4 mt-8">
       <div className="flex flex-col items-center">
-        <div className="w-10 h-6 rounded" style={{ backgroundColor: "rgb(200, 80, 80)" }}></div>
+        <div className="w-10 h-6 rounded" style={{ backgroundColor: "red" }}></div>
         <span className="text-xs ">Name1</span>
       </div>
       <div className="flex flex-col items-center">
-        <div className="w-10 h-6 rounded" style={{ backgroundColor: "rgb(130, 180, 90)" }}></div>
+        <div className="w-10 h-6 rounded" style={{ backgroundColor: "blue" }}></div>
         <span className="text-xs ">Name2</span>
       </div>
       <div className="flex flex-col items-center">
-        <div className="w-10 h-6 rounded" style={{ backgroundColor: "rgb(100, 150, 220)" }}></div>
+        <div className="w-10 h-6 rounded" style={{ backgroundColor: "green" }}></div>
         <span className="text-xs ">Name3</span>
       </div>
       <div className="flex flex-col items-center">
-        <div className="w-10 h-6 rounded" style={{ backgroundColor: "rgb(230, 200, 120)" }}></div>
+        <div className="w-10 h-6 rounded" style={{ backgroundColor: "yellow" }}></div>
         <span className="text-xs ">Name4</span>
       </div>
       <div className="flex flex-col items-center">
-        <div className="w-10 h-6 rounded" style={{ backgroundColor: "rgb(120, 160, 180)" }}></div>
+        <div className="w-10 h-6 rounded" style={{ backgroundColor: "black" }}></div>
         <span className="text-xs ">Name5</span>
       </div>
       <div className="flex flex-col items-center">
-        <div className="w-10 h-6 rounded" style={{ backgroundColor: "rgb(180, 140, 200)" }}></div>
+        <div className="w-10 h-6 rounded" style={{ backgroundColor: "purple" }}></div>
         <span className="text-xs ">Name6</span>
       </div>
     </div>
