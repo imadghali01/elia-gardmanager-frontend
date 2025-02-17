@@ -15,6 +15,7 @@ const Login = ({ onClose }) => {
               headers: {
                 "Content-Type": "application/json",
               },
+              credentials: "include", // ❗important c'est pour envoyé les coockies 🍪 de session. 
               body: JSON.stringify({ email: userId, passWord: password }), // Envoie les infos
             });
       
