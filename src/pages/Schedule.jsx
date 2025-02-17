@@ -29,7 +29,6 @@ function Schedule() {
     fetch("http://localhost:8000/schedule")
       .then((response) => response.json())
       .then((data) => {
-        console.log("Données reçues du backend :", data); // 🔍 Debug
   
         if (!data || !Array.isArray(data)) {
           console.error("Format inattendu des données !");
@@ -132,6 +131,12 @@ function Schedule() {
           return "react-calendar__tile blue";
         case "shift3":
           return "react-calendar__tile green";
+        case "shift4":
+          return "react-calendar__tile  yellow";
+        case "shift5":
+          return "react-calendar__tile light-black";
+        case "shift6":
+          return "react-calendar__tile purple";
         default:
           return "";
       }
