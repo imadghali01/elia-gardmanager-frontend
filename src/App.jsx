@@ -53,7 +53,6 @@ function App() {
         <Route path="/login" element={<Login />} />
     
         <Route path="/Schedule" element={<Schedule />} />
-        <Route path="/offers" element={<Offers />} />
         <Route path="/HomeAdmin" element={<HomeAdmin />} />
     
         <Route path="/CreateSchedule" element={<CreateSchedule />} />
