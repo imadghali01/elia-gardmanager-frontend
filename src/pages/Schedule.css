@@ -64,3 +64,29 @@ margin:auto;
   font-size: 20px;
   cursor: pointer;
 }
+
+.custom-datepicker {
+  width: 100%;
+  max-width: 400px;
+  border: solid 1px;
+  padding: 5px;
+}
+
+
+.react-calendar__tile.red {
+  background-color: #ef4444; /* Rouge */
+  color: white;
+  border-radius: 6px;
+}
+
+.react-calendar__tile.blue {
+  background-color: #3b82f6; /* Bleu */
+  color: white;
+  border-radius: 6px;
+}
+
+.react-calendar__tile.green {
+  background-color: #10b981; /* Vert */
+  color: white;
+  border-radius: 6px;
+}
