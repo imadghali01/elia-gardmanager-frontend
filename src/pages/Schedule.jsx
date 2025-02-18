@@ -20,12 +20,11 @@ function Schedule() {
     fetch("http://localhost:8000/schedule")
       .then((response) => response.json())
       .then((data) => {
-  
         if (!data || !Array.isArray(data)) {
           console.error("Format inattendu des données !");
           return;
         }
-  
+
         // Extraire et reformater les shifts
         const formattedShifts = data.flatMap((entry) =>
           Object.entries(entry.shifts || {}).flatMap(([shiftKey, days]) =>
@@ -38,7 +37,7 @@ function Schedule() {
             }))
           )
         );
-  
+
         console.log("Shifts formatés :", formattedShifts);
         setShifts(formattedShifts);
       })
@@ -54,7 +53,9 @@ function Schedule() {
   };
 
   const handleSaveEvent = () => {
-    alert(`Événement "${eventName}" ajouté pour le ${date.toLocaleDateString()}`);
+    alert(
+      `Événement "${eventName}" ajouté pour le ${date.toLocaleDateString()}`
+    );
     setShowPopup(false);
     setEventName("");
   };
@@ -71,10 +72,10 @@ function Schedule() {
           userTwo: null, // Optionnel
           type: "request", // ou "offer" selon le formulaire
           dateIn: startDate, // Date sélectionnée dans le DatePicker
-          dateOut: null // Optionnel
+          dateOut: null, // Optionnel
         }),
       });
-  
+
       const data = await response.json();
       if (response.ok) {
         alert("Switch enregistré avec succès !");
@@ -85,11 +86,10 @@ function Schedule() {
       console.error("Erreur lors de l'enregistrement :", error);
     }
   };
-  
 
   return (
     <div className="flex min-h-screen flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-gray-100">
-        <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-10 px-6 shadow-md rounded-lg">
         <Logout/>
         <div className="sm:mx-auto sm:w-full sm:max-w-md mb-10 mt-5">
@@ -165,71 +165,112 @@ function Schedule() {
       </div>
     </div>
 
-     {/* Popup */}
-     {showPopup && (
+              {/* Popup */}
+              {showPopup && (
                 <div className="popup-overlay">
                   <div className="popup-content">
-                    <img src={logo} alt="Elia Logo" className="mx-auto h-15 w-auto mb-5" />
-                    <p className="mb-2">Date sélectionnée : {date.toLocaleDateString()}</p>
-                    <button className="close-btn" onClick={() => setShowPopup(false)}>❌</button>
+                    <img
+                      src={logo}
+                      alt="Elia Logo"
+                      className="mx-auto h-15 w-auto mb-5"
+                    />
+                    <p className="mb-2">
+                      Date sélectionnée : {date.toLocaleDateString()}
+                    </p>
+                    <button
+                      className="close-btn"
+                      onClick={() => setShowPopup(false)}
+                    >
+                      ❌
+                    </button>
 
                     {/* Formulaire "Propose Your Service" */}
-<button className="popup-btn" onClick={() => setShowServiceForm(!showServiceForm)}>
-  Propose Your Service
-</button>
-{showServiceForm && (
-  <div className=" p-3 border rounded bg-gray-100">
-    <DatePicker
-      selected={startDate}
-      onChange={(date) => setStartDate(date)}
-      showTimeSelect
-      dateFormat="Pp"
-      className="custom-datepicker"
-      value={FormData.dateIn}  /* <<<<<<<<<<<<<<<<<<<<<<< la veuleur enregistrer dans le back end pas sur si cest la bonne valuer>>>>>>>>>>>>>>>>>>>>>>>>< */
-    />  
-    <button 
-      onClick={handleSaveSwitch}
-    className="bg-white text-black text-lg border-orange-400 border-4 py-2 w-50 my-2 rounded-lg cursor-pointer hover:bg-orange-400">Save</button>
-    </div>
-)}
+                    <button
+                      className="popup-btn"
+                      onClick={() => setShowServiceForm(!showServiceForm)}
+                    >
+                      Propose Your Service
+                    </button>
+                    {showServiceForm && (
+                      <div className=" p-3 border rounded bg-gray-100">
+                        <DatePicker
+                          selected={startDate}
+                          onChange={(date) => setStartDate(date)}
+                          showTimeSelect
+                          dateFormat="Pp"
+                          className="custom-datepicker"
+                          value={
+                            FormData.dateIn
+                          } /* <<<<<<<<<<<<<<<<<<<<<<< la veuleur enregistrer dans le back end pas sur si cest la bonne valuer>>>>>>>>>>>>>>>>>>>>>>>>< */
+                        />
+                        <button
+                          onClick={handleSaveSwitch}
+                          className="bg-white text-black text-lg border-orange-400 border-4 py-2 w-50 my-2 rounded-lg cursor-pointer hover:bg-orange-400"
+                        >
+                          Save
+                        </button>
+                      </div>
+                    )}
 
-{/* Formulaire "Ask For A Switch" */}
-<button className="popup-btn" onClick={() => setShowSwitchForm(!showSwitchForm)}>
-  Ask For A Switch
-</button>
-{showSwitchForm && (
-  <div className=" p-3 border rounded bg-gray-100">
-    <DatePicker
-      selected={startDate}
-      onChange={(date) => setStartDate(date)}
-      showTimeSelect
-      dateFormat="Pp"
-      className="custom-datepicker"
-      value={FormData.dateIn}  /* <<<<<<<<<<<<<<<<<<<<<<< la veuleur enregistrer yrytfytèdans le back end pas sur si cest la bonne valuer>>>>>>>>>>>>>>>>>>>>>>>>< */
-    />    
-      <div className="text-left ml-11 pt-2">
-      <label><input type="radio" name="reason" value="holidays" /> Holidays</label><br />
-      <label><input type="radio" name="reason" value="other" /> Other</label><br />
-      <label className=""><input type="radio" name="reason" value="invalid"/> Invalid</label>
-      <div></div>
-    </div>
-    <button 
-    onClick={handleSaveSwitch}
-    className="bg-white text-black text-lg border-orange-400 border-4 py-2 w-50 my-2 rounded-lg cursor-pointer hover:bg-orange-400">Save</button>  </div>
-)}
-
+                    {/* Formulaire "Ask For A Switch" */}
+                    <button
+                      className="popup-btn"
+                      onClick={() => setShowSwitchForm(!showSwitchForm)}
+                    >
+                      Ask For A Switch
+                    </button>
+                    {showSwitchForm && (
+                      <div className=" p-3 border rounded bg-gray-100">
+                        <DatePicker
+                          selected={startDate}
+                          onChange={(date) => setStartDate(date)}
+                          showTimeSelect
+                          dateFormat="Pp"
+                          className="custom-datepicker"
+                          value={
+                            FormData.dateIn
+                          } /* <<<<<<<<<<<<<<<<<<<<<<< la veuleur enregistrer yrytfytèdans le back end pas sur si cest la bonne valuer>>>>>>>>>>>>>>>>>>>>>>>>< */
+                        />
+                        <div className="text-left ml-11 pt-2">
+                          <label>
+                            <input
+                              type="radio"
+                              name="reason"
+                              value="holidays"
+                            />{" "}
+                            Holidays
+                          </label>
+                          <br />
+                          <label>
+                            <input type="radio" name="reason" value="other" />{" "}
+                            Other
+                          </label>
+                          <br />
+                          <label className="">
+                            <input type="radio" name="reason" value="invalid" />{" "}
+                            Invalid
+                          </label>
+                          <div></div>
+                        </div>
+                        <button
+                          onClick={handleSaveSwitch}
+                          className="bg-white text-black text-lg border-orange-400 border-4 py-2 w-50 my-2 rounded-lg cursor-pointer hover:bg-orange-400"
+                        >
+                          Save
+                        </button>{" "}
+                      </div>
+                    )}
 
                     {/* Bouton "See All the Switch" */}
                     <button className="popup-btn">See All the Switch</button>
                   </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
       </div>
-    )}
-  </div>
-</div>
-
-  </div>
-  </div>
-  </div>
+    </div>
   );
 }
 
