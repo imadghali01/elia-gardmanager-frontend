@@ -107,3 +107,20 @@ margin:auto;
   color: white;
   border-radius: 6px;
 }
+.react-calendar__tile.yellow {
+  background-color: yellow; /* Rouge */
+  color: white;
+  border-radius: 6px;
+}
+
+.react-calendar__tile.react-calendar__tile.light-black {
+  background-color: black; /* Bleu */
+  color: white;
+  border-radius: 6px;
+}
+
+.react-calendar__tile.purple {
+  background-color: purple; /* Vert */
+  color: white;
+  border-radius: 6px;
+}
