@@ -4,18 +4,9 @@ import "react-calendar/dist/Calendar.css";
 import "./Schedule.css";
 import logo from "../assets/img/logoElia.png";
 import { Container } from "postcss";
-
 import Logout from "../components/Logout";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
-
-
-
-
-
-
-
 
 function Schedule() {
   const [date, setDate] = useState(new Date());
@@ -29,7 +20,6 @@ function Schedule() {
     fetch("http://localhost:8000/schedule")
       .then((response) => response.json())
       .then((data) => {
-        console.log("Données reçues du backend :", data); // 🔍 Debug
   
         if (!data || !Array.isArray(data)) {
           console.error("Format inattendu des données !");
@@ -56,10 +46,6 @@ function Schedule() {
         console.error("Erreur lors du chargement des shifts:", error)
       );
   }, []);
-  
-  
-
-
   
 
   const handleDayClick = (value) => {
@@ -132,6 +118,12 @@ function Schedule() {
           return "react-calendar__tile blue";
         case "shift3":
           return "react-calendar__tile green";
+        case "shift4":
+          return "react-calendar__tile  yellow";
+        case "shift5":
+          return "react-calendar__tile light-black";
+        case "shift6":
+          return "react-calendar__tile purple";
         default:
           return "";
       }
@@ -148,27 +140,27 @@ function Schedule() {
     {/* Légende des couleurs */}
     <div className="flex justify-center gap-4 mt-8">
       <div className="flex flex-col items-center">
-        <div className="w-10 h-6 rounded" style={{ backgroundColor: "red" }}></div>
+        <div className="w-10 h-6 rounded" style={{ backgroundColor: "#a57204" }}></div>
         <span className="text-xs ">Name1</span>
       </div>
       <div className="flex flex-col items-center">
-        <div className="w-10 h-6 rounded" style={{ backgroundColor: "blue" }}></div>
+        <div className="w-10 h-6 rounded" style={{ backgroundColor: "#005148" }}></div>
         <span className="text-xs ">Name2</span>
       </div>
       <div className="flex flex-col items-center">
-        <div className="w-10 h-6 rounded" style={{ backgroundColor: "green" }}></div>
+        <div className="w-10 h-6 rounded" style={{ backgroundColor: "#5B584F" }}></div>
         <span className="text-xs ">Name3</span>
       </div>
       <div className="flex flex-col items-center">
-        <div className="w-10 h-6 rounded" style={{ backgroundColor: "yellow" }}></div>
+        <div className="w-10 h-6 rounded" style={{ backgroundColor: "#0F353D" }}></div>
         <span className="text-xs ">Name4</span>
       </div>
       <div className="flex flex-col items-center">
-        <div className="w-10 h-6 rounded" style={{ backgroundColor: "black" }}></div>
+        <div className="w-10 h-6 rounded" style={{ backgroundColor: "#634A00" }}></div>
         <span className="text-xs ">Name5</span>
       </div>
       <div className="flex flex-col items-center">
-        <div className="w-10 h-6 rounded" style={{ backgroundColor: "purple" }}></div>
+        <div className="w-10 h-6 rounded" style={{ backgroundColor: "#383456" }}></div>
         <span className="text-xs ">Name6</span>
       </div>
     </div>
