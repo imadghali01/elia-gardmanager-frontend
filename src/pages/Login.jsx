@@ -19,8 +19,8 @@ const Login = ({ onClose }) => {
               body: JSON.stringify({ email: userId, passWord: password }), // Envoie les infos
             });
       
-            const data = await response.json();
-            const currentUser = data.userId ;
+            const data = await response.json(); 
+            const currentUser = data.userId ;/* id de lutilisateur recuperer */
             console.log(currentUser)
       
             if (response) {
