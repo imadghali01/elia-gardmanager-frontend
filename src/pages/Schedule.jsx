@@ -53,14 +53,6 @@ function Schedule() {
     setShowPopup(true);
   };
 
-  const handleSaveEvent = () => {
-    alert(
-      `Événement "${eventName}" ajouté pour le ${date.toLocaleDateString()}`
-    );
-    setShowPopup(false);
-    setEventName("");
-  };
-
   const handleSaveSwitch = async () => {
     try {
       const response = await fetch("http://localhost:8000/switch", {
@@ -90,9 +82,8 @@ function Schedule() {
 
   return (
     <IphoneContainer>
-    <div className="flex min-h-screen flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-gray-100">
+    <div className="flex-1 space-y-6 overflow-y-auto min-h-0 overscroll-contain scroll-smooth scrollbar-hide">
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-10 px-6 shadow-md rounded-lg">
         <Logout/>
         <div className="sm:mx-auto sm:w-full sm:max-w-md mb-10 mt-5">
         <img
@@ -169,7 +160,7 @@ function Schedule() {
 
               {/* Popup */}
               {showPopup && (
-                <div className="popup-overlay">
+                <div className="popup-overlay inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
                   <div className="popup-content">
                     <img
                       src={logo}
@@ -272,7 +263,6 @@ function Schedule() {
           </div>
         </div>
       </div>
-    </div>
     </IphoneContainer>
   );
 }

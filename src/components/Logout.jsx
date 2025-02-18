@@ -18,9 +18,13 @@ const Logout = () => {
     };
 
     return (
-        <button onClick={handleLogout} className="bg-red-600 text-white p-2 rounded-lg">
-            Logout
-        </button>
+        <button 
+  onClick={handleLogout} 
+  className="bg-gray-700 text-white px-2 py-1 rounded-lg border border-gray-500 shadow-md hover:bg-gray-600 active:opacity-80 transition-all duration-200"
+>
+  Logout
+</button>
+
     );
 };
 
