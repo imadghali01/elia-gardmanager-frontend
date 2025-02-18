@@ -87,6 +87,7 @@ margin:auto;
 
 .react-calendar__tile.green {
   background-color: #5B584F; /* Vert */
+
   color: white;
   border-radius: 6px;
 }
@@ -104,23 +105,24 @@ margin:auto;
 
 .react-calendar__tile.purple {
   background-color: #383456; /* Vert */
+
   color: white;
   border-radius: 6px;
 }
 .react-calendar__tile.yellow {
-  background-color: rgb(214, 214, 7); /* Rouge */
+  background-color: #0F353D; /* Rouge */
   color: white;
   border-radius: 6px;
 }
 
 .react-calendar__tile.react-calendar__tile.light-black {
-  background-color: black; /* Bleu */
+  background-color: #634a00; /* Bleu */
   color: white;
   border-radius: 6px;
 }
 
 .react-calendar__tile.purple {
-  background-color: purple; /* Vert */
+  background-color: #383456; /* Vert */
   color: white;
   border-radius: 6px;
 }
