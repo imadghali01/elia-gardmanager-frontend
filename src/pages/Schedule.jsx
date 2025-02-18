@@ -119,7 +119,7 @@ function Schedule() {
         case "shift3":
           return "react-calendar__tile green";
         case "shift4":
-          return "react-calendar__tile  yellow";
+          return "react-calendar__tile yellow";
         case "shift5":
           return "react-calendar__tile light-black";
         case "shift6":

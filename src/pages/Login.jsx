@@ -5,7 +5,7 @@ const Login = ({ onClose }) => {
     const [userId, setUserId] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-
+    
     const handleSubmit = async(e) => {
         e.preventDefault();
 
@@ -20,6 +20,8 @@ const Login = ({ onClose }) => {
             });
       
             const data = await response.json();
+            const currentUser = data.userId ;
+            console.log(currentUser)
       
             if (response) {
               navigate("/schedule"); // Redirige vers Schedule
