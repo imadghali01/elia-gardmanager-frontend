@@ -7,6 +7,7 @@ import { Container } from "postcss";
 import Logout from "../components/Logout";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import IphoneContainer from "../components/IphoneContainer";
 
 function Schedule() {
   const [date, setDate] = useState(new Date());
@@ -88,6 +89,7 @@ function Schedule() {
   };
 
   return (
+    <IphoneContainer>
     <div className="flex min-h-screen flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-gray-100">
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-10 px-6 shadow-md rounded-lg">
@@ -119,7 +121,7 @@ function Schedule() {
         case "shift3":
           return "react-calendar__tile green";
         case "shift4":
-          return "react-calendar__tile yellow";
+          return "react-calendar__tile  yellow";
         case "shift5":
           return "react-calendar__tile light-black";
         case "shift6":
@@ -271,6 +273,7 @@ function Schedule() {
         </div>
       </div>
     </div>
+    </IphoneContainer>
   );
 }
 
