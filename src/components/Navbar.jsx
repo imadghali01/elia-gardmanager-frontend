@@ -15,14 +15,14 @@ function Navbar() {
   };
 
   return (
-    <header className="w-112 flex items-center justify-between bg-white border-b p-4">
+    <header className="w-90 flex items-center justify-between bg-white border-b p-4">
       {/* Logo */}
       <div className="flex items-center space-x-2 cursor-pointer" onClick={() => navigate("/")}> 
         <img src="/src/assets/img/LogoElia.png" alt="Elia Logo" className="h-11" />
       </div>
 
       {/* Title */}
-      <h1 className="text-lg font-bold pr-10 pt-1">eDuty</h1>
+      <h1 className="text-lg font-bold pr-10 pt-3">eDuty</h1>
 
       {/* Language Switcher */}
       <div className="flex space-x-2">
