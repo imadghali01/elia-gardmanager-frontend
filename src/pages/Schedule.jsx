@@ -45,6 +45,7 @@ function Schedule() {
         console.error("Erreur lors du chargement des shifts:", error)
       );
   }, []);
+  
 
   const handleDayClick = (value) => {
     setDate(value);
@@ -90,95 +91,79 @@ function Schedule() {
     <div className="flex min-h-screen flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-gray-100">
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-10 px-6 shadow-md rounded-lg">
-          <Logout />
-          <div className="sm:mx-auto sm:w-full sm:max-w-md mb-10 mt-5">
-            <img
-              alt="Your Company"
-              src="/src/assets/img/LogoElia.png"
-              className="mx-auto h-20 w-auto"
-            />
-          </div>
-          <div className="px-6 rounded-lg mt-15 sm:mx-auto sm:w-full sm:max-w-md">
-            <div className="calendar-container">
-              <Calendar
-                onClickDay={handleDayClick}
-                tileClassName={({ date, view }) => {
-                  if (view !== "month") return "";
+        <Logout/>
+        <div className="sm:mx-auto sm:w-full sm:max-w-md mb-10 mt-5">
+        <img
+            alt="Your Company"
+            src="/src/assets/img/LogoElia.png"
+            className="mx-auto h-20 w-auto"
+        />
+        </div>
+        <div className="px-6 rounded-lg mt-15 sm:mx-auto sm:w-full sm:max-w-md">
+  <div className="calendar-container">
+  <Calendar
+  onClickDay={handleDayClick}
+  tileClassName={({ date, view }) => {
+    if (view !== "month") return "";
+  
+    const dateString = date.toISOString().split("T")[0]; // Format "YYYY-MM-DD"
+  
+    const shiftFound = shifts.find((schedule) => schedule.date === dateString);
+  
+    if (shiftFound) {
+      switch (shiftFound.type) {
+        case "shift1":
+          return "react-calendar__tile red";
+        case "shift2":
+          return "react-calendar__tile blue";
+        case "shift3":
+          return "react-calendar__tile green";
+        case "shift4":
+          return "react-calendar__tile  yellow";
+        case "shift5":
+          return "react-calendar__tile light-black";
+        case "shift6":
+          return "react-calendar__tile purple";
+        default:
+          return "";
+      }
+    }
+  
+    return "";
+  }}
+  
 
-                  const dateString = date.toISOString().split("T")[0]; // Format "YYYY-MM-DD"
+  
+/>
 
-                  const shiftFound = shifts.find(
-                    (schedule) => schedule.date === dateString
-                  );
-
-                  if (shiftFound) {
-                    switch (shiftFound.type) {
-                      case "shift1":
-                        return "react-calendar__tile red";
-                      case "shift2":
-                        return "react-calendar__tile blue";
-                      case "shift3":
-                        return "react-calendar__tile green";
-                      case "shift4":
-                        return "react-calendar__tile  yellow";
-                      case "shift5":
-                        return "react-calendar__tile light-black";
-                      case "shift6":
-                        return "react-calendar__tile purple";
-                      default:
-                        return "";
-                    }
-                  }
-
-                  return "";
-                }}
-              />
-
-              {/* Légende des couleurs */}
-              <div className="flex justify-center gap-4 mt-8">
-                <div className="flex flex-col items-center">
-                  <div
-                    className="w-10 h-6 rounded"
-                    style={{ backgroundColor: "red" }}
-                  ></div>
-                  <span className="text-xs ">Name1</span>
-                </div>
-                <div className="flex flex-col items-center">
-                  <div
-                    className="w-10 h-6 rounded"
-                    style={{ backgroundColor: "blue" }}
-                  ></div>
-                  <span className="text-xs ">Name2</span>
-                </div>
-                <div className="flex flex-col items-center">
-                  <div
-                    className="w-10 h-6 rounded"
-                    style={{ backgroundColor: "green" }}
-                  ></div>
-                  <span className="text-xs ">Name3</span>
-                </div>
-                <div className="flex flex-col items-center">
-                  <div
-                    className="w-10 h-6 rounded"
-                    style={{ backgroundColor: "rgb(214, 214, 7)" }}
-                  ></div>
-                  <span className="text-xs ">Name4</span>
-                </div>
-                <div className="flex flex-col items-center">
-                  <div
-                    className="w-10 h-6 rounded"
-                    style={{ backgroundColor: "black" }}
-                  ></div>
-                  <span className="text-xs ">Name5</span>
-                </div>
-                <div className="flex flex-col items-center">
-                  <div
-                    className="w-10 h-6 rounded"
-                    style={{ backgroundColor: "purple" }}
-                  ></div>
-                  <span className="text-xs ">Name6</span>
-                </div>
-              </div>
+    
+    {/* Légende des couleurs */}
+    <div className="flex justify-center gap-4 mt-8">
+      <div className="flex flex-col items-center">
+        <div className="w-10 h-6 rounded" style={{ backgroundColor: "#a57204" }}></div>
+        <span className="text-xs ">Name1</span>
+      </div>
+      <div className="flex flex-col items-center">
+        <div className="w-10 h-6 rounded" style={{ backgroundColor: "#005148" }}></div>
+        <span className="text-xs ">Name2</span>
+      </div>
+      <div className="flex flex-col items-center">
+        <div className="w-10 h-6 rounded" style={{ backgroundColor: "#5B584F" }}></div>
+        <span className="text-xs ">Name3</span>
+      </div>
+      <div className="flex flex-col items-center">
+        <div className="w-10 h-6 rounded" style={{ backgroundColor: "#0F353D" }}></div>
+        <span className="text-xs ">Name4</span>
+      </div>
+      <div className="flex flex-col items-center">
+        <div className="w-10 h-6 rounded" style={{ backgroundColor: "#634A00" }}></div>
+        <span className="text-xs ">Name5</span>
+      </div>
+      <div className="flex flex-col items-center">
+        <div className="w-10 h-6 rounded" style={{ backgroundColor: "#383456" }}></div>
+        <span className="text-xs ">Name6</span>
+      </div>
+    </div>
 
               {/* Popup */}
               {showPopup && (

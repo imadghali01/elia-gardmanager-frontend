@@ -87,6 +87,25 @@ margin:auto;
 
 .react-calendar__tile.green {
   background-color: #5B584F; /* Vert */
+
+  color: white;
+  border-radius: 6px;
+}
+.react-calendar__tile.yellow {
+  background-color: #0F353D ;/* Rouge */
+  color: white;
+  border-radius: 6px;
+}
+
+.react-calendar__tile.react-calendar__tile.light-black {
+  background-color: #634A00; /* Bleu */
+  color: white;
+  border-radius: 6px;
+}
+
+.react-calendar__tile.purple {
+  background-color: #383456; /* Vert */
+
   color: white;
   border-radius: 6px;
 }
