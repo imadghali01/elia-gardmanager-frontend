@@ -9,7 +9,8 @@ import Navbar from "../components/Navbar";
 import ExampleListUsers from "../components/ExempleListUsers";
 import ExampleListShifts from "../components/ExempleListShifts";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css"; 
+import "react-datepicker/dist/react-datepicker.css";
+import IphoneContainer from "../components/IphoneContainer";
 
 
 function CreateSchedule() {
@@ -112,11 +113,10 @@ function CreateSchedule() {
     };
 
     return (
-
+        <IphoneContainer>
         <div className="flex min-h-screen flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-gray-100">
-            <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+            <div className="mt-8 sm:mx-auto sm:w-full ">
                 <div className="bg-white py-2 px-6 shadow-md rounded-lg">
-                    <Navbar />
                     <div className="min-h-screen bg-white flex flex-col items-center justify-center pb-30">
                         <h1 className="text-xl font-bold">Créer un Horaire</h1>    
 
@@ -177,7 +177,7 @@ function CreateSchedule() {
                 </div>
             </div>
         </div>
-
+        </IphoneContainer>
             );
 }
 

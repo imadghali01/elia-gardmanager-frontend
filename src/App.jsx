@@ -8,6 +8,8 @@ import Schedule from "./pages/Schedule";
 
 import HomeAdmin from "./pages/HomeAdmin";
 import CreateSchedule from './pages/CreateSchedule';
+import ShiftCardAdmin from './pages/ShiftCardAdmin';
+
 
 import { useNavigate } from "react-router-dom";
 
@@ -56,6 +58,8 @@ function App() {
         <Route path="/HomeAdmin" element={<HomeAdmin />} />
     
         <Route path="/CreateSchedule" element={<CreateSchedule />} />
+        <Route path="/ShiftCardAdmin" element={<ShiftCardAdmin />} />
+
     
       </Routes>
   );
