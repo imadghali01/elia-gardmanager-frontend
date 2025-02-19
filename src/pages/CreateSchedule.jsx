@@ -28,6 +28,7 @@ function CreateSchedule() {
     const [selectedShift, setSelectedShift] = useState("");
     const [registeredShifts, setRegisteredShifts] = useState([]);
     const [isReadyToSubmit, setIsReadyToSubmit] = useState(false);
+    
 
     const shifts = ["shift1", "shift2", "shift3", "shift4", "shift5", "shift6"];
     const weekDays = ["Jeudi", "Vendredi", "Samedi", "Dimanche", "Lundi", "Mardi", "Mercredi"];
@@ -127,13 +128,20 @@ function CreateSchedule() {
                                 selected={startDate} 
                                 onChange={(date) => setStartDate(date)} 
                                 className="mt-2 p-2 border rounded-md" 
+                                disabled={registeredShifts.length > 0} // Bloque le DatePicker après l'enregistrement d'un shift
                             />
+
+
                         </div>
 
                         {/* Sélection utilisateur + shift */}
                         <div className="flex flex-col items-center mt-4">
                             <label className="block text-sm font-medium text-gray-900"> </label>
-                            <ExampleListUsers onSelect={handleUserSelect} />
+                            <ExampleListUsers 
+                                onSelect={handleUserSelect}
+                                selectedUser={selectedUser}
+                            />
+
                         </div>
 
                         <div className="flex flex-col items-center mt-4">
