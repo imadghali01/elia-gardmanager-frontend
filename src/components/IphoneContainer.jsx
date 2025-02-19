@@ -7,7 +7,8 @@ export default function IphoneContainer({ children }) {
         {/* Notch (Encoche iPhone) */}
         <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-24 h-5 bg-black rounded-b-lg"></div>
         
-          <Navbar />
+        {/* Navbar */}
+        <Navbar />
 
         {/* Contenu de la page (scrollable) */}
         <div className="flex-1 p-4 space-y-6 overflow-y-auto min-h-0 overscroll-contain scroll-smooth scrollbar-hide">
