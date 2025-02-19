@@ -1,76 +1,49 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import ShiftCard from "../components/ShiftCard";
+import { useState, useEffect } from "react";
 import IphoneContainer from "../components/IphoneContainer";
+import ShiftCard from "../components/ShiftCard";
 
 export default function ShiftCardAdmin() {
-  // Simulation de données pour chaque statut
-  const availableShifts = [
-    {
-      name: "ThibautH.",
-      score: -2,
-      date: "03/01/2025",
-      time: "6AM → 6PM",
-      email: "ThibautHass@gmail.com",
-      phone: "3195 864 792",
-      isAvailable: true,
-    },
-    {
-      name: "LouisP.",
-      score: 4,
-      date: "05/01/2025",
-      time: "8AM → 10PM",
-      email: "LouisPest@hotmail.be",
-      phone: "3486 824 937",
-      isAvailable: true,
-    },
-  ];
+  const [availableShifts, setAvailableShifts] = useState([]);
+  const [pendingRequests, setPendingRequests] = useState([]);
+  const [finishedShifts, setFinishedShifts] = useState([]);
 
-  const pendingRequests = [
-    {
-      name: "JeffreyM.",
-      score: 5,
-      date: "02/01/2025",
-      time: "12AM → 6PM",
-      reason: "Other",
-      email: "Jeffreymartin@hotmail.be",
-      phone: "4876 057 657",
-      isAvailable: false,
-    },
-    {
-      name: "MathieuB.",
-      score: -8,
-      date: "07/01/2025",
-      time: "12AM → 6PM",
-      reason: "Vacation",
-      email: "MathieuBart@hotmail.com",
-      phone: "9856 275 981",
-      isAvailable: false,
-    },
-  ];
+  useEffect(() => {
+    const fetchShifts = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/switch");
+        if (!response.ok) {
+          throw new Error("Erreur lors de la récupération des shifts");
+        }
+        const data = await response.json();
 
-  const finishedShifts = [
-    {
-      name: "PiterO.",
-      score: 9,
-      date: "05/01/2025",
-      time: "8AM → 10PM",
-      previousHolder: "AxelC.",
-      email: "LouisPest@hotmail.be",
-      phone: "3486 824 937",
-      isAvailable: true,
-    },
-  ];
+        // Trier les shifts selon leur état
+        const available = data.filter((shift) => shift.state === "waiting");
+        const pending = data.filter((shift) => shift.state === "processing");
+        const finished = data.filter((shift) => shift.state === "validate");
+        console.log(available);
+        console.log(pending);
+        console.log(finished);
+
+        setAvailableShifts(available);
+        setPendingRequests(pending);
+        setFinishedShifts(finished);
+      } catch (error) {
+        console.error("Erreur:", error);
+      }
+    };
+
+    fetchShifts();
+  }, []);
 
   return (
-      <IphoneContainer>
+    <IphoneContainer>
       <ShiftCard
-       availableShifts={availableShifts}
-       pendingRequests={pendingRequests}
-       finishedShifts={finishedShifts}
+        availableShifts={availableShifts}
+        pendingRequests={pendingRequests}
+        finishedShifts={finishedShifts}
       />
     </IphoneContainer>
   );
 }
-
