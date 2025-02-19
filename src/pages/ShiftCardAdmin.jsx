@@ -50,7 +50,9 @@ async function getSwitchesAndUsers() {
     const available = mergedData.filter((item) => item.state === "waiting");
     const pending = mergedData.filter((item) => item.state === "processing");
     const finished = mergedData.filter((item) => item.state === "validate");
-
+    console.log(available);
+    console.log(pending);
+    console.log(finished);
     // 6. On retourne les 3 groupes dans un objet
     return { available, pending, finished };
   } catch (error) {
