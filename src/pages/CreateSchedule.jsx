@@ -115,15 +115,14 @@ function CreateSchedule() {
 
     return (
         <IphoneContainer>
-        <div className="flex min-h-screen flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-gray-100">
-            <div className="mt-8 sm:mx-auto sm:w-full ">
+        <div className="flex flex-col h-full">
+            <div className="flex-1 flex items-center justify-cente">
                 <div className="bg-white py-2 px-6 shadow-md rounded-lg">
-                    <div className="min-h-screen bg-white flex flex-col items-center justify-center pb-30">
-                        <h1 className="text-xl font-bold">Créer un Horaire</h1>    
-
+                    <div className="min-h-screen bg-white flex flex-col items-center justify-items-center">
+                        <h1 className="text-xl font-bold mb-30 mt-5">Créer un Horaire</h1>    
                         {/* Sélection de la date de départ */}
-                        <div className="flex flex-col items-center mt-4">
-                            <label className="block text-sm font-medium text-gray-900">Sélectionnez une date de départ (un **jeudi**)  </label>
+                        <div className="flex flex-col items-center">
+                            <label className="block text-sm font-medium text-gray-900">Sélectionnez une date de départ ( un jeudi )  </label>
                             <DatePicker 
                                 selected={startDate} 
                                 onChange={(date) => setStartDate(date)} 

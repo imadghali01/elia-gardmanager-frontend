@@ -22,18 +22,28 @@ header h1{
 
 .menu-enter {
     transform: translateY(100%);
-  }
-  
-  .menu-enter-active {
+}
+
+.menu-enter-active {
     transform: translateY(0);
     transition: transform 300ms;
-  }
-  
-  .menu-exit {
+}
+
+.menu-exit {
     transform: translateY(0);
-  }
-  
-  .menu-exit-active {
+}
+
+.menu-exit-active {
     transform: translateY(100%);
     transition: transform 300ms;
-  }
+}
+
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
