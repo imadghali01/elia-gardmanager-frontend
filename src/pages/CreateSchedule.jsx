@@ -1,11 +1,16 @@
-import { useState } from "react";
+'use client';
+
+import { useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom"; 
 import { useTranslation } from "react-i18next"; 
 import '../styles/tailwind-global.css';
 import '../styles/custom.css';
 import Navbar from "../components/Navbar";
-
-
+import ExampleListUsers from "../components/ExempleListUsers";
+import ExampleListShifts from "../components/ExempleListShifts";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import IphoneContainer from "../components/IphoneContainer";
 
 
 function CreateSchedule() {
@@ -18,87 +23,163 @@ function CreateSchedule() {
       i18n.changeLanguage(lng);// Bascule entre "en" et "fr"
     };
 
-     // Gestion des champs de saisie avec useState
-    const [formData, setFormData] = useState({
-      email: "",
-      password: "",
-      });
-  
-      // Gestion des changements de champs
-      const handleChange = (e) => {
-      setFormData({
-          ...formData,
-          [e.target.name]: e.target.value,
-          });
-      };
-  
-      // Gestion de la soumission du formulaire
-      const handleSubmit = (e) => {
-      e.preventDefault();
-      console.log("Données soumises :", formData);
-      // Ici, tu peux appeler une API pour envoyer les données à ton backend
-      };
-  
-  
+    const [startDate, setStartDate] = useState(null);
+    const [selectedUser, setSelectedUser] = useState(null);
+    const [selectedShift, setSelectedShift] = useState("");
+    const [registeredShifts, setRegisteredShifts] = useState([]);
+    const [isReadyToSubmit, setIsReadyToSubmit] = useState(false);
+
+    const shifts = ["shift1", "shift2", "shift3", "shift4", "shift5", "shift6"];
+    const weekDays = ["Jeudi", "Vendredi", "Samedi", "Dimanche", "Lundi", "Mardi", "Mercredi"];
+
+    useEffect(() => {
+        setIsReadyToSubmit(registeredShifts.length === 6 && startDate !== null);
+    }, [registeredShifts, startDate]);
+
+    const handleUserSelect = (user) => {
+        console.log("Utilisateur sélectionné :", user);
+        setSelectedUser(user);
+    };
+
+    const handleShiftSelect = (shift) => {
+        console.log("Shift sélectionné :", shift);
+        setSelectedShift(shift);
+    };
+
+
+    const registerShift = () => {
+        console.log("Tentative d'enregistrement :", { selectedUser, selectedShift });
+
+        if (!startDate) {
+            alert("Veuillez d'abord sélectionner une date de début !");
+            return;
+        }
+        if (!selectedUser || !selectedUser.id) {
+            alert("Veuillez sélectionner un utilisateur !");
+            return;
+        }
+        if (!selectedShift) {
+            alert("Veuillez sélectionner un shift !");
+            return;
+        }
+        if (registeredShifts.find(shift => shift.shift === selectedShift)) {
+            alert("Ce shift est déjà enregistré !");
+            return;
+        }
+
+        setRegisteredShifts(prev => [...prev, { shift: selectedShift, user: selectedUser }]);
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (!startDate) {
+            alert("Veuillez sélectionner une date de début !");
+            return;
+        }
+
+        const formattedShifts = {};
+        registeredShifts.forEach(({ shift, user }, index) => {
+            const shiftSchedule = {};
+            weekDays.forEach((day, i) => {
+                const date = new Date(startDate);
+                date.setDate(date.getDate() + (index * 7) + i); // Ajoute 7 jours pour chaque shift 
+                shiftSchedule[day] = [date.toISOString().split("T")[0], user.id, user.statusId];
+            });
+            formattedShifts[shift] = shiftSchedule;
+        });
+
+        console.log("📤 Données envoyées :", JSON.stringify({ shifts: formattedShifts, user: selectedUser?.id }, null, 2));
+
+        try {
+            const response = await fetch("http://localhost:8000/schedule", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({  shifts: formattedShifts, user: selectedUser.id })
+            });
+
+            if (!response.ok) {
+                throw new Error(`Erreur API: ${response.status} ${response.statusText}`);
+            }
+
+            alert("Planning enregistré avec succès !");
+            navigate("/schedule");
+
+        } catch (error) {
+            console.error("❌ Erreur lors de l'enregistrement :", error);
+            alert("Une erreur est survenue !");
+        }
+    };
+
     return (
-
+        <IphoneContainer>
         <div className="flex min-h-screen flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-gray-100">
-        <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+            <div className="mt-8 sm:mx-auto sm:w-full ">
+                <div className="bg-white py-2 px-6 shadow-md rounded-lg">
+                    <div className="min-h-screen bg-white flex flex-col items-center justify-center pb-30">
+                        <h1 className="text-xl font-bold">Créer un Horaire</h1>    
 
-        {/* Navbar réutilisable */}
-        <Navbar />
+                        {/* Sélection de la date de départ */}
+                        <div className="flex flex-col items-center mt-4">
+                            <label className="block text-sm font-medium text-gray-900">Sélectionnez une date de départ (un **jeudi**)  </label>
+                            <DatePicker 
+                                selected={startDate} 
+                                onChange={(date) => setStartDate(date)} 
+                                className="mt-2 p-2 border rounded-md" 
+                            />
+                        </div>
 
-        <div className="bg-white py-2 px-6 shadow-md rounded-lg">
+                        {/* Sélection utilisateur + shift */}
+                        <div className="flex flex-col items-center mt-4">
+                            <label className="block text-sm font-medium text-gray-900"> </label>
+                            <ExampleListUsers onSelect={handleUserSelect} />
+                        </div>
 
-        <div className="min-h-screen bg-white flex flex-col items-center">
-        
-        <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="flex">
-        {/* Champ Full Name */}
-        <div className="w-2/3">
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                Full Name
-                </label>
-                <input
-                id="email"
-                name="email"
-                placeholder="Full Name"
-                type="email"
-                required
-                autoComplete="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                />
+                        <div className="flex flex-col items-center mt-4">
+                            <label className="block text-sm font-medium text-gray-900"> </label>
+                            <ExampleListShifts onSelect={handleShiftSelect} />
+                        </div>
+
+                        <button 
+                            className="mt-2 p-2 bg-green-500 text-white rounded-md" 
+                            onClick={registerShift}
+                        >
+                            Register the Shift
+                        </button>
+
+                        {/* Affichage des shifts enregistrés */}
+                        {registeredShifts.length > 0 && (
+                            <div className="mt-6">
+                                <h2 className="text-lg font-bold">Shifts enregistrés :</h2>
+                                <ul className="list-disc pl-4">
+                                    {registeredShifts.map(({ shift, user }) => (
+                                        <li key={shift} className="text-gray-800">
+                                            {shift} → {user.name} (ID: {user.id}, StatusID: {user.statusId})
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
+
+                        {/* Bouton de soumission */}
+                        <button
+                            type="submit"
+                            className={`mt-6 p-2 text-white rounded-md ${
+                                isReadyToSubmit ? "bg-orange-500 hover:bg-indigo-500" : "bg-gray-300 cursor-not-allowed"
+                            }`}
+                            onClick={handleSubmit}
+                            disabled={!isReadyToSubmit}
+                        >
+                            Enregistrer le planning
+                        </button>
+                    </div>
+                </div>
             </div>
-            {/* Champ contract */}
-            <div className="w-1/3 ml-4"> 
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                N° de contract
-                </label>
-                <input
-                id="email"
-                name="email"
-                placeholder="487690"
-                type="email"
-                required
-                autoComplete="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                />
-            </div>
         </div>
-          </form>
-        
-        </div>
-      </div>
-
-      </div>
-        </div>
-
+        </IphoneContainer>
             );
-    }
+}
 
 export default CreateSchedule;
 

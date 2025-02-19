@@ -2,19 +2,19 @@
 
 /* Calandrier */
 .calendar-container{
-width: 350px; /* Je peux pas elargire plus le calendrier que ca je crois  */
+width: 300px; /* Je peux pas elargire plus le calendrier que ca je crois  */
 height: 800px;
 margin:auto;
 }
 
 /* Fond du popup */
 .popup-overlay {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -70,4 +70,42 @@ margin:auto;
   max-width: 400px;
   border: solid 1px;
   padding: 5px;
+}
+
+
+.react-calendar__tile.red {
+  background-color: #0f54a3; /* Rouge */
+  color: white;
+  border-radius: 6px;
+}
+
+.react-calendar__tile.blue {
+  background-color: #005148; /* Bleu */
+  color: white;
+  border-radius: 6px;
+}
+
+.react-calendar__tile.green {
+  background-color: #538618; /* Vert */
+
+  color: white;
+  border-radius: 6px;
+}
+
+.react-calendar__tile.react-calendar__tile.light-black {
+  background-color: #81161f; /* Bleu */
+  color: white;
+  border-radius: 6px;
+}
+
+.react-calendar__tile.purple {
+  background-color: #383456; /* Vert */
+
+  color: white;
+  border-radius: 6px;
+}
+.react-calendar__tile.yellow {
+  background-color: #0f9e97; /* Rouge */
+  color: white;
+  border-radius: 6px;
 }
