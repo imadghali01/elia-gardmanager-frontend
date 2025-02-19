@@ -15,7 +15,6 @@ function Schedule() {
   const [showServiceForm, setShowServiceForm] = useState(false);
   const [showSwitchForm, setShowSwitchForm] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
-  const userId= currentUser;
 
   const [shifts, setShifts] = useState([]);
   useEffect(() => {
@@ -144,7 +143,7 @@ function Schedule() {
     <div className="flex justify-center gap-4 mt-8">
       <div className="flex flex-col items-center">
         <div className="w-10 h-6 rounded" style={{ backgroundColor: "#a57204" }}></div>
-        <span className="text-xs ">Name</span>
+        <span className="text-xs ">Name1</span>
       </div>
       <div className="flex flex-col items-center">
         <div className="w-10 h-6 rounded" style={{ backgroundColor: "#005148" }}></div>
