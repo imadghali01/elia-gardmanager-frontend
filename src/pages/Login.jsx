@@ -23,12 +23,17 @@ const Login = ({ onClose }) => {
             });
       
             const data = await response.json(); 
-            const currentUser = data.userId ;/* id de lutilisateur recuperer */
-            console.log(currentUser)
+            globalThis.currentUser = [data.userId,data.role ];/* id de lutilisateur recuperer */
+            console.log(currentUser [0],currentUser[1])
+            
       
-            if (response) {
+            if (response && currentUser[1] == "user") {
               navigate("/schedule"); // Redirige vers Schedule
-            } else {
+            } 
+            else if(response && currentUser[1] == "admin"){
+                navigate("/HomeAdmin");//redirige vers la page admin
+            }
+            else {
               alert(data.error || "Identifiants incorrects");
             }
           } catch (error) {
