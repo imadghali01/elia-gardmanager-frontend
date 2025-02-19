@@ -22,7 +22,7 @@ export default function ShiftCard() {
         const transformData = (shifts) =>
           shifts.map((sw) => ({
             ...sw,
-            name: sw.fullname, // On utilise "fullname" pour le nom
+            name: sw.fullName, // On utilise "fullname" pour le nom
             date: sw.createdAt, // La date de création
             time: `${sw.dateOut} -> ${sw.dateIn}`, // L'horaire, de "dateOut" à "dateIn"
             reason: sw.reason || "confort", // La raison (ou "confort" par défaut)

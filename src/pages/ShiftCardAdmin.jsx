@@ -40,7 +40,7 @@ async function getSwitchesAndUsers() {
       mergedData.push({
         ...sw,
         score,
-        fullname: userFound.fullname, // Nom complet de l'utilisateur
+        fullName: userFound.fullName, // Nom complet de l'utilisateur
         email: userFound.email,
         phone: userFound.phone,
       });
