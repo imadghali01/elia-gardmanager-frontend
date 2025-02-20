@@ -18,11 +18,11 @@ function HomeAdmin() {
 
   return (
     <IphoneContainer>
-      <div className="flex min-h-screen flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-gray-100">
-        <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-          <Logout />
+      <div className="flex min-h-screen flex-1 flex-col justify-center lg:px-8">
+        <div className="sm:mx-auto sm:w-full sm:max-w-md">
 
-          <div className="bg-white py-2 px-6 shadow-md rounded-lg">
+          <div className="bg-white py-2 px-6">
+            <Logout/>  
             <div className="min-h-screen bg-white flex flex-col items-center">
               {/* Buttons Section */}
               <div className="w-full max-w-sm mt-50 space-y-4">
