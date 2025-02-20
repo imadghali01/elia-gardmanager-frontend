@@ -5,6 +5,7 @@ import '../styles/tailwind-global.css';
 import '../styles/custom.css';
 import Navbar from "../components/Navbar";
 import IphoneContainer from "../components/IphoneContainer";
+import Logout from "../components/Logout";
 
 
 
@@ -25,11 +26,13 @@ function HomeAdmin() {
         <div className="flex min-h-screen flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-gray-100">
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
 
+        <Logout/>
+
         <div className="bg-white py-2 px-6 shadow-md rounded-lg">
 
         <div className="min-h-screen bg-white flex flex-col items-center">
         {/* Buttons Section */}
-        <div className="w-full max-w-sm mt-80 space-y-4">
+        <div className="w-full max-w-sm mt-50 space-y-4">
           <button
             type="button"
             className="w-full rounded-md bg-orange-500 px-4 py-3 text-white font-semibold shadow hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400"
@@ -41,6 +44,7 @@ function HomeAdmin() {
           <button
             type="button"
             className="w-full rounded-md bg-orange-500 px-4 py-3 text-white font-semibold shadow hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400"
+            onClick={() => navigate("/shiftcardadmin")} 
           >
             {t("seeSwitches")}
           </button>
@@ -54,10 +58,7 @@ function HomeAdmin() {
           </button>
         </div>
       </div>
-
       </div>
-        </div>
-        </div>
         </IphoneContainer>
             );
     }
