@@ -18,20 +18,18 @@ async function getSwitchesAndUsers() {
       return acc;
     }, {});
 
-    // 4. Récupère le solde (balance) pour le currentUser via la route dédiée
-    const balanceRes = await fetch(
-      `http://localhost:8000/switch/${currentUser.userId}`
-    );
-    const balanceData = await balanceRes.json();
-    const balance = balanceData?.balance || 0;
-
     // 5. Pour chaque switch, fusionne les données du switch et de l'utilisateur
     // en formatant dateIn, dateOut, createdAt et en assignant score: balance
     const mergedData = [];
     for (const sw of allSwitches) {
       // On récupère l'utilisateur associé à ce switch
       const userFound = usersMap[sw.userOne] || {};
-
+      // 4. Récupère le solde (balance) pour le currentUser via la route dédiée
+      const balanceRes = await fetch(
+        `http://localhost:8000/switch/${sw.userOne}`
+      );
+      const balanceData = await balanceRes.json();
+      const balance = balanceData?.balance || 0;
       mergedData.push({
         ...sw,
         dateIn: sw.dateIn
