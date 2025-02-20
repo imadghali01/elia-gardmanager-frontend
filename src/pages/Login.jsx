@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import ShiftCard from "../components/ShiftCard";
 import IphoneContainer from "../components/IphoneContainer";
 
 const Login = ({ onClose }) => {  
