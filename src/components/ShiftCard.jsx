@@ -124,24 +124,19 @@ function ShiftCardItem({ shift, status }) {
       </div>
       <div className="mt-3">
         {status === "Pending" ? (
-          <button className="w-full text-center py-2 bg-orange-500 text-white rounded-md shadow-sm hover:bg-orange-600 transition">
-            Ask for a switch
-          </button>
+          <span>switch on</span>
         ) : status === "Finished" ? (
           <>
             <div className="text-center text-sm font-semibold text-gray-700">
-              Take the shift from{" "}
+              Take the shift from {shift.name}
               <span className="text-red-500 font-bold">
                 {shift.previousHolder ? shift.previousHolder : "Unknown"}
               </span>
             </div>
-            <button className="w-full text-center py-2 bg-blue-500 text-white rounded-md shadow-sm hover:bg-blue-600 transition">
-              Available for a switch
-            </button>
           </>
         ) : (
           <button className="w-full text-center py-2 bg-blue-500 text-white rounded-md shadow-sm hover:bg-blue-600 transition">
-            Available for a switch
+            Ask for a switch
           </button>
         )}
       </div>
