@@ -47,9 +47,7 @@ function AppContent({ user, setUser }) {
       <Route
         path="/"
         element={
-          <h1 className="text-3xl font-bold text-center">
-            Bienvenue sur Elia GardManager
-          </h1>
+          <Login/>
         }
       />
       <Route path="/register" element={<Register />} />

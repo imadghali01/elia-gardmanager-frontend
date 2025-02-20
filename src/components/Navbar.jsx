@@ -78,7 +78,6 @@ function Navbar() {
             <ul className="p-4 space-y-4 flex-1 flex flex-col justify-center items-center mb-20">
               <li><a href="/Schedule" className="text-white text-2xl">Schedule</a></li>
               <li><a href="/shiftcardusers" className="text-white text-2xl">See all the Switches</a></li>
-              <li><a href="/login" className="text-white text-2xl">Login</a></li>
 
               <li><a href="/HomeAdmin" className="text-white text-2xl">HomeAdmin</a></li>
             </ul>
