@@ -47,10 +47,10 @@ export default function Register() {
 
   return (
     <IphoneContainer>
-      <div className="flex min-h-screen flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-gray-100">
-        <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+      <div className="flex flex-col h-full">
+        <div className="flex-1 flex items-center justify-center">
           <div className="bg-white py-10 px-6 shadow-md rounded-lg">
-            <div className="sm:mx-auto sm:w-full sm:max-w-md mb-10 mt-5">
+            <div className="flex-1 p-4 space-y-6 overflow-y-auto min-h-0 overscroll-contain scroll-smooth scrollbar-hide">
               <img
                 alt="Your Company"
                 src="/src/assets/img/LogoElia.png"
