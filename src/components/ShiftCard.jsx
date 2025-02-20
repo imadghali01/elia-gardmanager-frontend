@@ -40,9 +40,8 @@ export default function ShiftCard() {
   }, []);
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-200 overflow-hidden">
-      <div className="w-[375px] h-[812px] bg-white shadow-2xl rounded-[40px] border border-gray-300 overflow-hidden relative touch-pan-y">
-        <div className="h-[calc(100%-4rem)] p-4 space-y-6 overflow-auto snap-mandatory snap-y overscroll-contain">
+    <div className="flex-1 space-y-6 overflow-y-auto min-h-0 scrollbar-hide">
+      <div className="h-[calc(100%-4rem)] p-4 space-y-6 overflow-y-auto scrollbar-hide">
           {/* Affichage des Available Shifts */}
           <h3 className="text-lg font-semibold text-gray-900 mb-4 border-b pb-2">
             Available Shifts
@@ -82,7 +81,7 @@ export default function ShiftCard() {
           <div className="h-12" />
         </div>
       </div>
-    </div>
+
   );
 }
 
