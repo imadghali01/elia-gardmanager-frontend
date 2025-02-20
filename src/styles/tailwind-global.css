@@ -47,3 +47,7 @@ header h1{
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
 }
+
+.menuContent{
+    background-color: rgba(61, 80, 90, 0.95)
+}

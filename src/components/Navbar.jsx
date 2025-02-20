@@ -29,7 +29,7 @@ function Navbar() {
         </div>
 
         {/* Title */}
-        <h1 className="text-lg font-bold">eDuty</h1>
+        <h1 className="text-lg font-bold mt-5 mr-6">eDuty</h1>
 
         {/* Language Switcher + Menu Burger */}
         <div className="flex items-center space-x-4">
@@ -65,21 +65,22 @@ function Navbar() {
       {/* Menu Overlay */}
       {isMenuOpen && (
         <div
-          className="absolute top-0 left-47 w-350px h-full bg-black bg-opacity-50 z-30"
+          className="absolute top-0 left-47 w-350px h-full z-30"
           onClick={toggleMenu}
         >
           {/* Menu Content */}
           <div
-            className="absolute top-[72px] left-1/2 transform -translate-x-1/2 w-[375px] h-[740px] bg-black bg-opacity-90 rounded-b-[40px] overflow-hidden flex flex-col"
+            className="menuContent absolute top-[72px] left-1/2 transform -translate-x-1/2 w-[375px] h-[740px] rounded-b-[40px] overflow-hidden flex flex-col"
+
             onClick={(e) => e.stopPropagation()} // Empêche la fermeture du menu lors d'un clic à l'intérieur
           >
             {/* Menu Items */}
             <ul className="p-4 space-y-4 flex-1 flex flex-col justify-center items-center mb-20">
-              <li><a href="/Schedule" className="text-white">Schedule</a></li>
-              <li><a href="/shiftcardusers" className="text-white">See all the Switches</a></li>
-              <li><a href="/login" className="text-white">Login</a></li>
+              <li><a href="/Schedule" className="text-white text-2xl">Schedule</a></li>
+              <li><a href="/shiftcardusers" className="text-white text-2xl">See all the Switches</a></li>
+              <li><a href="/login" className="text-white text-2xl">Login</a></li>
 
-              <li><a href="/HomeAdmin" className="text-white">HomeAdmin</a></li>
+              <li><a href="/HomeAdmin" className="text-white text-2xl">HomeAdmin</a></li>
             </ul>
           </div>
         </div>
