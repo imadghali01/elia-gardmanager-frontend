@@ -131,7 +131,7 @@ function ShiftCardItem({ shift, status, onTakeShift }) {
             className="w-full text-center py-2 bg-blue-500 text-white rounded-md shadow-sm hover:bg-blue-600 transition"
             onClick={() => onTakeShift(shift)}
           >
-            Ask for a switch
+            Accept this switch
           </button>
         )}
       </div>
