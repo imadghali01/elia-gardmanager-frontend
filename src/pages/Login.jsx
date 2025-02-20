@@ -23,12 +23,17 @@ const Login = ({ onClose }) => {
             });
       
             const data = await response.json(); 
-            const currentUser = data.userId ;/* id de lutilisateur recuperer */
-            console.log(currentUser)
+            globalThis.currentUser = [data.userId,data.role ];/* id de lutilisateur recuperer */
+            console.log(currentUser [0],currentUser[1])
+            
       
-            if (response) {
+            if (response && currentUser[1] == "user") {
               navigate("/schedule"); // Redirige vers Schedule
-            } else {
+            } 
+            else if(response && currentUser[1] == "admin"){
+                navigate("/HomeAdmin");//redirige vers la page admin
+            }
+            else {
               alert(data.error || "Identifiants incorrects");
             }
           } catch (error) {
@@ -40,9 +45,9 @@ const Login = ({ onClose }) => {
     return (
         <IphoneContainer className="flex max-h-full overflow-hidden" >
         <div className="flex items-center justify-center max-h-full">
-            <div className="bg-gray-200 p-6 rounded-2xl shadow-lg w-96 text-center relative">
+            <div className="formLogin p-6 rounded-2xl shadow-lg w-96 text-center relative mt-40">
                 
-                <h2 className="text-orange-600 text-3xl font-bold mb-4">LOGIN</h2>
+                <h2 className="logintitle text-orange-600 text-3xl font-bold mb-4">LOGIN</h2>
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <input
                         type="text"

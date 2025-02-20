@@ -32,7 +32,7 @@ function HomeAdmin() {
 
         <div className="min-h-screen bg-white flex flex-col items-center">
         {/* Buttons Section */}
-        <div className="w-full max-w-sm mt-80 space-y-4">
+        <div className="w-full max-w-sm mt-50 space-y-4">
           <button
             type="button"
             className="w-full rounded-md bg-orange-500 px-4 py-3 text-white font-semibold shadow hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400"
@@ -44,6 +44,7 @@ function HomeAdmin() {
           <button
             type="button"
             className="w-full rounded-md bg-orange-500 px-4 py-3 text-white font-semibold shadow hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400"
+            onClick={() => navigate("/shiftcardadmin")} 
           >
             {t("seeSwitches")}
           </button>
@@ -57,10 +58,7 @@ function HomeAdmin() {
           </button>
         </div>
       </div>
-
       </div>
-        </div>
-        </div>
         </IphoneContainer>
             );
     }
