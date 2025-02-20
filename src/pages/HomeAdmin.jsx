@@ -5,6 +5,7 @@ import '../styles/tailwind-global.css';
 import '../styles/custom.css';
 import Navbar from "../components/Navbar";
 import IphoneContainer from "../components/IphoneContainer";
+import Logout from "../components/Logout";
 
 
 
@@ -24,6 +25,8 @@ function HomeAdmin() {
 
         <div className="flex min-h-screen flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-gray-100">
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+
+        <Logout/>
 
         <div className="bg-white py-2 px-6 shadow-md rounded-lg">
 
