@@ -8,7 +8,7 @@ import HomeAdmin from "./pages/HomeAdmin";
 import CreateSchedule from "./pages/CreateSchedule";
 // Importez le composant ShiftCard qui affiche les cartes complètes pour chaque switch
 import ShiftCard from "./components/ShiftCard.jsx";
-import ShiftCardUsers from './pages/ShiftCardUsers';
+import ShiftCardUsers from "./pages/ShiftCardUsers";
 
 function App() {
   // Vérification de session (utilisateur connecté ou non)
@@ -35,7 +35,6 @@ function AppContent({ user, setUser }) {
         } else {
           setUser(data);
           console.log("Utilisateur connecté :", data);
-          navigate("/schedule");
         }
       })
       .catch((error) =>
