@@ -29,7 +29,7 @@ async function getSwitchesAndUsers() {
         `http://localhost:8000/switch/${sw.userOne}`
       );
       const balanceData = await balanceRes.json();
-      const balance = balanceData?.balance || 0;
+      const balance = balanceData?.userBalance || 0;
       mergedData.push({
         ...sw,
         dateIn: sw.dateIn
