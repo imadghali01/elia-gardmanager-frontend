@@ -37,7 +37,7 @@ function HomeAdmin() {
                 <button
                   type="button"
                   className="w-full rounded-md bg-orange-500 px-4 py-3 text-white font-semibold shadow hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400"
-                  onClick={() => navigate("/shiftcardadmin")}
+                  onClick={() => navigate("/shiftcardusers")}
                 >
                   {t("seeSwitches")}
                 </button>
