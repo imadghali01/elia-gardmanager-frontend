@@ -93,7 +93,7 @@ function CreateSchedule() {
       const shiftSchedule = {};
       weekDays.forEach((day, i) => {
         const date = new Date(startDate);
-        date.setDate(date.getDate() + index * 7 + i); // Ajoute 7 jours pour chaque shift
+        date.setDate(date.getDate() + index * 7 + i); 
         shiftSchedule[day] = [
           date.toISOString().split("T")[0],
           user.id,
@@ -154,7 +154,7 @@ function CreateSchedule() {
                   selected={startDate}
                   onChange={(date) => setStartDate(date)}
                   className="mt-2 p-2 border rounded-md"
-                  disabled={registeredShifts.length > 0} // Bloque le DatePicker après l'enregistrement d'un shift
+                  disabled={registeredShifts.length > 0} 
                 />
               </div>
 

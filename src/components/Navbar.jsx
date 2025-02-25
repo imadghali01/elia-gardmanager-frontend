@@ -24,8 +24,15 @@ function Navbar() {
       {/* Header */}
       <header className="w-full flex items-center justify-between bg-gradient-to-b from-white to-gray-100 shadow-lg rounded-b-lg p-4 relative z-20">
         {/* Logo */}
-        <div className="flex items-center space-x-2 cursor-pointer" onClick={() => navigate("/")}> 
-          <img src="/src/assets/img/LogoElia.png" alt="Elia Logo" className="h-11" />
+        <div
+          className="flex items-center space-x-2 cursor-pointer"
+          onClick={() => navigate("/")}
+        >
+          <img
+            src="/src/assets/img/LogoElia.png"
+            alt="Elia Logo"
+            className="h-11"
+          />
         </div>
 
         {/* Title */}
@@ -71,15 +78,26 @@ function Navbar() {
           {/* Menu Content */}
           <div
             className="menuContent absolute top-[72px] left-1/2 transform -translate-x-1/2 w-[375px] h-[740px] rounded-b-[40px] overflow-hidden flex flex-col"
-
             onClick={(e) => e.stopPropagation()} // Empêche la fermeture du menu lors d'un clic à l'intérieur
           >
             {/* Menu Items */}
             <ul className="p-4 space-y-4 flex-1 flex flex-col justify-center items-center mb-20">
-              <li><a href="/Schedule" className="text-white text-2xl">Schedule</a></li>
-              <li><a href="/shiftcardusers" className="text-white text-2xl">See all the Switches</a></li>
+              <li>
+                <a href="/Schedule" className="text-white text-2xl">
+                  Schedule
+                </a>
+              </li>
+              <li>
+                <a href="/shiftcardusers" className="text-white text-2xl">
+                  See all the Switches
+                </a>
+              </li>
 
-              <li><a href="/HomeAdmin" className="text-white text-2xl">HomeAdmin</a></li>
+              <li>
+                <a href="/HomeAdmin" className="text-white text-2xl">
+                  HomeAdmin
+                </a>
+              </li>
             </ul>
           </div>
         </div>

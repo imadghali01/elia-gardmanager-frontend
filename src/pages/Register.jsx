@@ -4,7 +4,6 @@ import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import IphoneContainer from "../components/IphoneContainer";
 
 export default function Register() {
-  // Gestion des champs de saisie avec useState
   const [formData, setFormData] = useState({
     passWord: "",
     fullName: "",
@@ -16,7 +15,6 @@ export default function Register() {
     phone: "",
   });
 
-  // Gestion des changements de champs
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -24,11 +22,9 @@ export default function Register() {
     });
   };
 
-  // Gestion de la soumission du formulaire
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Données soumises :", formData);
-    // Ici, tu peux appeler une API pour envoyer les données à ton backend (post)
     try {
       const response = await fetch("http://localhost:8000/user", {
         method: "POST",

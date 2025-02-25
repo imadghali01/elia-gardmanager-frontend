@@ -20,9 +20,8 @@ function HomeAdmin() {
     <IphoneContainer>
       <div className="flex min-h-screen flex-1 flex-col justify-center lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
-
           <div className="bg-white py-2 px-6">
-            <Logout/>  
+            <Logout />
             <div className="min-h-screen bg-white flex flex-col items-center">
               {/* Buttons Section */}
               <div className="w-full max-w-sm mt-50 space-y-4">

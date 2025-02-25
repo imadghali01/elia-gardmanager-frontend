@@ -30,11 +30,11 @@ function Schedule() {
         const formattedShifts = data.flatMap((entry) =>
           Object.entries(entry.shifts || {}).flatMap(([shiftKey, days]) =>
             Object.entries(days).map(([day, shiftDetails]) => ({
-              date: shiftDetails[0], // Première valeur du tableau
-              userId: shiftDetails[1], // Deuxième valeur
-              extraInfo: shiftDetails[2], // Troisième valeur (peut être null)
-              type: shiftKey, // shift1, shift2, etc.
-              day: day, // Lundi, Mardi, etc.
+              date: shiftDetails[0],
+              userId: shiftDetails[1], 
+              extraInfo: shiftDetails[2], 
+              type: shiftKey,
+              day: day, 
             }))
           )
         );
@@ -61,11 +61,11 @@ function Schedule() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          userOne: "65a123456abcde789fghi012", // ID de l'utilisateur actuel
-          userTwo: null, // Optionnel
-          type: "request", // ou "offer" selon le formulaire
-          dateIn: startDate, // Date sélectionnée dans le DatePicker
-          dateOut: null, // Optionnel
+          userOne: "65a123456abcde789fghi012",/* info en dure */
+          userTwo: null, 
+          type: "request",
+          dateIn: startDate, 
+          dateOut: null, 
         }),
       });
 
@@ -194,7 +194,7 @@ function Schedule() {
                           className="custom-datepicker"
                           value={
                             FormData.dateIn
-                          } /* <<<<<<<<<<<<<<<<<<<<<<< la veuleur enregistrer dans le back end pas sur si cest la bonne valuer>>>>>>>>>>>>>>>>>>>>>>>>< */
+                          }
                         />
                         <button
                           onClick={handleSaveSwitch}
@@ -222,7 +222,7 @@ function Schedule() {
                           className="custom-datepicker"
                           value={
                             FormData.dateIn
-                          } /* <<<<<<<<<<<<<<<<<<<<<<< la veuleur enregistrer yrytfytèdans le back end pas sur si cest la bonne valuer>>>>>>>>>>>>>>>>>>>>>>>>< */
+                          } 
                         />
                         <div className="text-left ml-11 pt-2">
                           <label>

@@ -1,13 +1,9 @@
-
-
-/* Calandrier */
 .calendar-container{
-width: 300px; /* Je peux pas elargire plus le calendrier que ca je crois  */
+width: 300px; 
 height: 800px;
 margin:auto;
 }
 
-/* Fond du popup */
 .popup-overlay {
   position: absolute;
   top: 0;
@@ -20,10 +16,9 @@ margin:auto;
   justify-content: center;
 }
 
-/* Contenu du popup */
 .popup-content {
   background: white;
-  width: 350px; /* Largeur fixe */
+  width: 350px; 
   margin: auto;
   padding: 20px;
   text-align: center;
@@ -31,13 +26,11 @@ margin:auto;
   position: relative;
 }
 
-/* Logo */
 .logo {
   width: 120px;
   margin-bottom: 20px;
 }
 
-/* Boutons */
 .popup-btn {
   background: orange;
   color: white;
@@ -54,7 +47,6 @@ margin:auto;
   background: #e67e22;
 }
 
-/* Bouton fermer */
 .close-btn {
   position: absolute;
   top: 10px;
@@ -74,13 +66,13 @@ margin:auto;
 
 
 .react-calendar__tile.red {
-  background-color: #0f54a3; /* Rouge */
+  background-color: #0f54a3; 
   color: white;
   border-radius: 6px;
 }
 
 .react-calendar__tile.blue {
-  background-color: #005148; /* Bleu */
+  background-color: #005148; 
   color: white;
   border-radius: 6px;
 }
@@ -93,19 +85,19 @@ margin:auto;
 }
 
 .react-calendar__tile.react-calendar__tile.light-black {
-  background-color: #81161f; /* Bleu */
+  background-color: #81161f;
   color: white;
   border-radius: 6px;
 }
 
 .react-calendar__tile.purple {
-  background-color: #383456; /* Vert */
+  background-color: #383456; 
 
   color: white;
   border-radius: 6px;
 }
 .react-calendar__tile.yellow {
-  background-color: #0f9e97; /* Rouge */
+  background-color: #0f9e97; 
   color: white;
   border-radius: 6px;
 }

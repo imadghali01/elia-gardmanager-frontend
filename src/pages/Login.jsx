@@ -17,8 +17,8 @@ const Login = ({ onClose }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include", // ❗important c'est pour envoyé les coockies 🍪 de session.
-        body: JSON.stringify({ email: userId, passWord: password }), // Envoie les infos
+        credentials: "include", // envoyé les coockies de session.
+        body: JSON.stringify({ email: userId, passWord: password }),
       });
 
       const data = await response.json();
@@ -26,12 +26,11 @@ const Login = ({ onClose }) => {
         "data.userId",
         data.role,
       ]; /* id de lutilisateur recuperer */
-      console.log(currentUser[0], currentUser[1]);
 
       if (response && currentUser[1] == "user") {
-        navigate("/schedule"); // Redirige vers Schedule
+        navigate("/schedule");
       } else if (response && currentUser[1] == "admin") {
-        navigate("/HomeAdmin"); //redirige vers la page admin
+        navigate("/HomeAdmin");
       } else {
         alert(data.error || "Identifiants incorrects");
       }
