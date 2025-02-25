@@ -82,8 +82,7 @@ Si le projet utilise des **variables d'environnement**, crée un fichier `.env` 
 
 Exemple :  
 ```sh
-VITE_API_URL=https://api.example.com
-```
+https://github.com/imadghali01/Elia-gardManager-backend```
 
 ---
 
