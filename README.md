@@ -60,7 +60,7 @@ Exemple :
 
 
 Copier le code
-VITE_API_URL=https://api.example.com
+(https://github.com/imadghali01/Elia-gardManager-backend)
 🔗 Backend
 Ce projet fonctionne avec le backend Elia GardManager.
 Assure-toi de l'avoir démarré avant de lancer le frontend.
