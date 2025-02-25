@@ -1,26 +1,30 @@
 # eDuty (Front-End)
 
+Ce projet est le frontend de l'application Elia GardManager, développé avec React, Vite, et TailwindCSS.
 
+📦 Prérequis
+Avant d'installer et d'exécuter le projet, assure-toi d'avoir :
 
-## 🚀 Installation and setup
+Node.js (version recommandée : 18+)
+Un gestionnaire de paquets (npm ou yarn)
+🚀 Installation
+Cloner le dépôt :
 
-
-### 1️⃣ Clone the project
-```bash
-git clone https://github.com/nom-utilisateur/elia-gardmanager-frontend.git
+sh
+Copier le code
+git clone https://github.com/ton-org/elia-gardmanager-frontend.git
 cd elia-gardmanager-frontend
-```
-### 2️⃣ Installing dependencies
+Installer les dépendances :
 
-```bash
-npm install react-router-dom axios
-```
+sh
+Copier le code
+npm install
+(ou yarn install si tu utilises Yarn)
 
-```bash
-npm install tailwindcss @tailwindcss/vite
-```
-and follow de installation using vite https://tailwindcss.com/docs/installation/using-vite
+🏃‍♂️ Lancer le projet
+Pour démarrer le serveur de développement :
 
-```bash
-npm install @heroicons/react
-```
+sh
+Copier le code
+npm run dev
+Le projet sera accessible sur http://localhost:5173 (ou un autre port si 5173 est déjà utilisé).
