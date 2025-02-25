@@ -131,7 +131,7 @@ function ShiftCardItem({ shift, status, onTakeShift }) {
             className="w-full text-center py-2 bg-blue-500 text-white rounded-md shadow-sm hover:bg-blue-600 transition"
             onClick={() => onTakeShift(shift)}
           >
-            Ask for a switch
+            Accept this switch
           </button>
         )}
       </div>
@@ -186,7 +186,7 @@ function ShiftPopup({ shift, onClose }) {
   }
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+    <div className="popup-overlay inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
       <div className="bg-white p-6 rounded-lg shadow-xl w-80 text-center">
         <h2 className="text-lg font-semibold">
           Voulez-vous prendre le switch de {shift.name} ?
