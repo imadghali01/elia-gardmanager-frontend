@@ -1,30 +1,42 @@
 # eDuty (Front-End)
 
-Ce projet est le frontend de l'application Elia GardManager, développé avec React, Vite, et TailwindCSS.
+Bienvenue dans le frontend de l'application Elia GardManager. Ce projet utilise React, Vite, et TailwindCSS pour une expérience rapide et moderne.
 
-📦 Prérequis
-Avant d'installer et d'exécuter le projet, assure-toi d'avoir :
+🚀 Installation & Lancement
+📌 Prérequis
+Avant de commencer, assure-toi d'avoir installé :
+✔️ Node.js (version 18 ou plus)
+✔️ npm (inclus avec Node.js) ou Yarn (optionnel)
 
-Node.js (version recommandée : 18+)
-Un gestionnaire de paquets (npm ou yarn)
-🚀 Installation
-Cloner le dépôt :
-
+📥 Cloner le projet
 sh
 Copier le code
 git clone https://github.com/ton-org/elia-gardmanager-frontend.git
 cd elia-gardmanager-frontend
-Installer les dépendances :
+📦 Installer les dépendances
+sh
+Copier le code
+npm install  # ou yarn install
+🚀 Démarrer le serveur de développement
+sh
+Copier le code
+npm run dev  # ou yarn dev
+🔹 Par défaut, l'application s'ouvrira sur http://localhost:5173
+
+📌 Commandes utiles
+Commande	Description
+npm run dev	Démarre l'application en mode développement
+npm run build	Compile le projet pour la production
+npm run preview	Lance un aperçu du build de production
+npm run lint	Analyse et corrige les erreurs de code
+⚙️ Configuration
+Si ton projet utilise des variables d'environnement, pense à créer un fichier .env à la racine avec les valeurs nécessaires.
+Exemple :
 
 sh
 Copier le code
-npm install
-(ou yarn install si tu utilises Yarn)
+VITE_API_URL=https://api.example.com
+🔗 Backend
+Ce projet fonctionne avec le backend Elia GardManager.
+Assure-toi de le démarrer avant de lancer le frontend.
 
-🏃‍♂️ Lancer le projet
-Pour démarrer le serveur de développement :
-
-sh
-Copier le code
-npm run dev
-Le projet sera accessible sur http://localhost:5173 (ou un autre port si 5173 est déjà utilisé).
