@@ -9,7 +9,7 @@ Avant de commencer, assure-toi d'avoir installé :
 Node.js (version 18 ou plus)
 npm (inclus avec Node.js) ou Yarn (optionnel)
 📥 Cloner le projet
-sh
+
 Copier le code
 git clone https://github.com/ton-org/elia-gardmanager-frontend.git
 cd elia-gardmanager-frontend
@@ -40,7 +40,7 @@ Copier le code
 npm run dev
 🔹 Build pour la production
 
-sh
+
 Copier le code
 npm run build
 🔹 Aperçu du build
