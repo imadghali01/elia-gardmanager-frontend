@@ -82,7 +82,7 @@ Si le projet utilise des **variables d'environnement**, crée un fichier `.env` 
 
 Exemple :  
 ```sh
-https://github.com/imadghali01/Elia-gardManager-backend```
+VITE_API_URL=https://api.example.com
 
 ---
 
@@ -91,6 +91,4 @@ https://github.com/imadghali01/Elia-gardManager-backend```
 Ce projet fonctionne avec le **backend Elia GardManager**.  
 Assure-toi de l'avoir démarré avant de lancer le frontend.  
 
----
-
-💡 **Une question ?** Ouvre une issue ou contacte l'équipe ! 🚀  
+🔗 **Repo Backend** : [Elia GardManager Backend](https://github.com/imadghali01/Elia-gardManager-backend)
